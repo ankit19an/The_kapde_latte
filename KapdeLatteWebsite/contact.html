@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Contact — The Kapde Latte</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="kapde">
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html"><img src="assets/logo.svg" alt="The Kapde Latte"></a>
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="lookbook.html">Lookbook</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container py-12">
+    <h1 class="section-title">Contact</h1>
+    <p class="muted">Questions? Collaborations? Drop us a line.</p>
+    <div class="contact-grid mt-8">
+      <form id="contact-form" class="contact-form">
+        <label>Name<input type="text" name="name" required></label>
+        <label>Email<input type="email" name="email" required></label>
+        <label>Message<textarea name="message" rows="6" required></textarea></label>
+        <button class="btn btn-gold" type="submit">Send Message</button>
+        <div id="contact-msg" class="muted"></div>
+      </form>
+      <aside class="contact-aside">
+        <h4>Visit Us</h4>
+        <p>Flagship coming soon — follow us on Instagram for pop-up updates.</p>
+        <h4>Wholesale</h4>
+        <p>For bulk enquiries, email wholesale@kapdelatte.com</p>
+      </aside>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid"><div><h4>The Kapde Latte</h4></div><div><h5>Customer Care</h5></div><div><h5>Follow</h5></div></div>
+    <div class="copyright">© {{"{{"}} new Date().getFullYear() {{"}}"}} The Kapde Latte</div>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
