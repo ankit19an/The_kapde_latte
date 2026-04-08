@@ -1,5 +1,6 @@
 const menuToggle = document.querySelector(".menu-toggle");
 const siteNav = document.querySelector(".site-nav");
+const navLinks = document.querySelectorAll(".site-nav a");
 const cartToggle = document.querySelector(".cart-toggle");
 const cartPanel = document.querySelector(".cart-panel");
 const cartClose = document.querySelector(".cart-close");
@@ -12,9 +13,6 @@ const productCards = document.querySelectorAll(".product-card");
 const addToCartButtons = document.querySelectorAll(".add-to-cart");
 const subscribeForms = document.querySelectorAll(".subscribe-form");
 const searchToggle = document.querySelector(".search-toggle");
-const carousel = document.querySelector("[data-carousel]");
-const carouselPrev = document.querySelector("[data-carousel-prev]");
-const carouselNext = document.querySelector("[data-carousel-next]");
 const yearNodes = document.querySelectorAll("[data-year]");
 const revealNodes = document.querySelectorAll(".reveal");
 
@@ -69,9 +67,25 @@ const setCartOpen = (isOpen) => {
   document.body.style.overflow = isOpen ? "hidden" : "";
 };
 
-menuToggle?.addEventListener("click", () => {
-  const isOpen = siteNav.classList.toggle("is-open");
+const setMenuOpen = (isOpen) => {
+  if (!siteNav || !menuToggle) {
+    return;
+  }
+
+  siteNav.classList.toggle("is-open", isOpen);
   menuToggle.setAttribute("aria-expanded", String(isOpen));
+};
+
+menuToggle?.addEventListener("click", () => {
+  setMenuOpen(!siteNav.classList.contains("is-open"));
+});
+
+navLinks.forEach((link) => {
+  link.addEventListener("click", () => {
+    if (window.innerWidth <= 820) {
+      setMenuOpen(false);
+    }
+  });
 });
 
 cartToggle?.addEventListener("click", () => {
@@ -82,8 +96,7 @@ cartClose?.addEventListener("click", () => setCartOpen(false));
 overlay?.addEventListener("click", () => setCartOpen(false));
 
 searchToggle?.addEventListener("click", () => {
-  const featured = document.querySelector("#featured");
-  featured?.scrollIntoView({
+  document.querySelector("#featured")?.scrollIntoView({
     behavior: "smooth",
     block: "start",
   });
@@ -101,31 +114,8 @@ filterChips.forEach((chip) => {
       const matches = filter === "all" || card.dataset.category === filter;
       card.hidden = !matches;
     });
-
-    carousel?.scrollTo({
-      left: 0,
-      behavior: "smooth",
-    });
   });
 });
-
-const stepCarousel = (direction) => {
-  if (!carousel) {
-    return;
-  }
-
-  const firstCard = carousel.querySelector(".product-card:not([hidden])");
-  const cardWidth = firstCard?.getBoundingClientRect().width || 320;
-  const gap = 18;
-
-  carousel.scrollBy({
-    left: direction * (cardWidth + gap),
-    behavior: "smooth",
-  });
-};
-
-carouselPrev?.addEventListener("click", () => stepCarousel(-1));
-carouselNext?.addEventListener("click", () => stepCarousel(1));
 
 addToCartButtons.forEach((button) => {
   button.addEventListener("click", () => {

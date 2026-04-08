@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Visual homepage preview for The KapdeLatte, a rooted modern Indian clothing brand."
+      content="Homepage preview for The KapdeLatte, a rooted modern Indian clothing brand."
     />
     <title>The KapdeLatte | Homepage Preview</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -21,6 +21,10 @@
     <div class="wash wash-indigo"></div>
     <div class="texture texture-left"></div>
     <div class="texture texture-right"></div>
+
+    <div class="announcement-bar">
+      <p>Breathable fabrics, thoughtful fits, and free shipping above Rs. 2,499.</p>
+    </div>
 
     <header class="site-header" id="top">
       <a class="brand" href="index.html" aria-label="The KapdeLatte home">
@@ -77,30 +81,38 @@
             <a class="button button-secondary" href="our-thread.html">Read Our Thread</a>
           </div>
 
-          <ul class="hero-highlights" aria-label="Brand highlights">
-            <li>Breathable fabrics for Indian weather</li>
-            <li>Easy exchanges within 7 days</li>
-            <li>Free shipping above Rs. 2,499</li>
-          </ul>
+          <div class="hero-points" aria-label="Brand points">
+            <article class="mini-card">
+              <strong>Breathable fabrics</strong>
+              <span>Chosen for Indian weather and repeat wear.</span>
+            </article>
+            <article class="mini-card">
+              <strong>Relaxed silhouettes</strong>
+              <span>Easy fits that still feel polished.</span>
+            </article>
+            <article class="mini-card">
+              <strong>Rooted details</strong>
+              <span>Familiar shapes, finished with care.</span>
+            </article>
+          </div>
         </div>
 
         <div class="hero-visual" aria-hidden="true">
-          <div class="hero-portrait hero-portrait-main">
+          <div class="hero-photo hero-photo-main">
             <span>Everyday Co-ords</span>
           </div>
-          <div class="hero-portrait hero-portrait-top">
+          <div class="hero-photo hero-photo-side">
             <span>Breezy Cottons</span>
           </div>
-          <div class="hero-portrait hero-portrait-bottom">
-            <span>Festive Lights</span>
-          </div>
-          <div class="hero-note hero-note-top">
-            <p class="note-label">Signature palette</p>
-            <p class="note-title">Terracotta, indigo, marigold, forest, and quiet sand.</p>
-          </div>
-          <div class="hero-note hero-note-bottom">
-            <p class="note-label">Imagery direction</p>
-            <p class="note-title">Natural sunlight, lived-in spaces, and movement over posing.</p>
+          <div class="hero-panel">
+            <p class="note-label">What the look should say</p>
+            <p class="note-title">Warm, grounded, contemporary, and distinctly Indian in feeling.</p>
+            <div class="swatches">
+              <span style="--swatch: #c0503a"></span>
+              <span style="--swatch: #2e3a87"></span>
+              <span style="--swatch: #f5a623"></span>
+              <span style="--swatch: #3b6e4a"></span>
+            </div>
           </div>
         </div>
       </section>
@@ -115,27 +127,21 @@
           <article class="collection-card collection-card-terracotta">
             <p class="collection-kicker">The Everyday Co-ords</p>
             <h3>Matching sets that take the guesswork out of getting dressed.</h3>
-            <p>
-              Relaxed fits, soft structure, and colours that work from weekday to weekend.
-            </p>
+            <p>Relaxed fits, soft structure, and colours that work from weekday to weekend.</p>
             <a href="#featured">Shop Co-ords</a>
           </article>
 
           <article class="collection-card collection-card-marigold">
             <p class="collection-kicker">Festive Lights</p>
             <h3>Easy occasion pieces with a little glow and a lot of comfort.</h3>
-            <p>
-              Modern kurtas, textured layers, and polished silhouettes that never feel stiff.
-            </p>
+            <p>Modern kurtas, textured layers, and polished silhouettes that never feel stiff.</p>
             <a href="#featured">Shop Occasionwear</a>
           </article>
 
           <article class="collection-card collection-card-indigo">
             <p class="collection-kicker">Breezy Cottons</p>
             <h3>Soft, breathable staples made for warm days and repeat wear.</h3>
-            <p>
-              Cotton dresses, airy shirts, and easy trousers that move with real life.
-            </p>
+            <p>Cotton dresses, airy shirts, and easy trousers that move with real life.</p>
             <a href="#featured">Shop Cottons</a>
           </article>
         </div>
@@ -148,24 +154,19 @@
             <h2>Bestsellers that show the tone, fit, and ease of the brand.</h2>
           </div>
 
-          <div class="filter-group" role="toolbar" aria-label="Featured product filters">
-            <button class="filter-chip is-active" type="button" data-filter="all">All</button>
-            <button class="filter-chip" type="button" data-filter="coords">Co-ords</button>
-            <button class="filter-chip" type="button" data-filter="kurtas">Kurtas</button>
-            <button class="filter-chip" type="button" data-filter="dresses">Dresses</button>
-            <button class="filter-chip" type="button" data-filter="trousers">Trousers</button>
+          <div class="filters-wrap">
+            <span class="filter-label">Filter by</span>
+            <div class="filter-group" role="toolbar" aria-label="Featured product filters">
+              <button class="filter-chip is-active" type="button" data-filter="all">All</button>
+              <button class="filter-chip" type="button" data-filter="coords">Co-ords</button>
+              <button class="filter-chip" type="button" data-filter="kurtas">Kurtas</button>
+              <button class="filter-chip" type="button" data-filter="dresses">Dresses</button>
+              <button class="filter-chip" type="button" data-filter="trousers">Trousers</button>
+            </div>
           </div>
         </div>
 
-        <div class="carousel-header">
-          <p class="carousel-note">Hover a card to reveal the second look. On mobile, swipe through.</p>
-          <div class="carousel-controls">
-            <button class="carousel-button" type="button" data-carousel-prev>Prev</button>
-            <button class="carousel-button" type="button" data-carousel-next>Next</button>
-          </div>
-        </div>
-
-        <div class="product-carousel" data-carousel>
+        <div class="product-grid" data-product-grid>
           <article class="product-card reveal" data-category="coords">
             <div class="product-media">
               <div class="product-image product-image-front product-image-mitti-front"></div>
