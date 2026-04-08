@@ -1,0 +1,117 @@
+{
+  "sections": {
+    "hero": {
+      "type": "kapdelatte-hero",
+      "blocks": {
+        "mood-1": {
+          "type": "mood_card",
+          "settings": {
+            "kicker": "Workday Ease",
+            "title": "Easy layers for early starts and long afternoons.",
+            "copy": "Lightweight shirts, wide-leg pants, and versatile neutrals that hold shape all day.",
+            "card_style": "dawn"
+          }
+        },
+        "mood-2": {
+          "type": "mood_card",
+          "settings": {
+            "kicker": "Weekend Ease",
+            "title": "Relaxed silhouettes that still feel styled.",
+            "copy": "Breezy co-ords, knit tops, and throw-on pieces for slow afternoons.",
+            "card_style": "warm"
+          }
+        },
+        "mood-3": {
+          "type": "mood_card",
+          "settings": {
+            "kicker": "City Night",
+            "title": "Sharper tones and polished textures for after-hours plans.",
+            "copy": "Structured overshirts, fluid dresses, and statement accessories.",
+            "card_style": "night"
+          }
+        }
+      },
+      "block_order": ["mood-1", "mood-2", "mood-3"],
+      "settings": {
+        "eyebrow": "New season drop",
+        "heading": "Thoughtful clothing for real routines.",
+        "copy": "KapdeLatte brings together relaxed tailoring, versatile silhouettes, and easy fabrics for people who want everyday wear to still feel intentional.",
+        "primary_label": "Shop The Edit",
+        "primary_link": "",
+        "secondary_label": "Read Our Story",
+        "secondary_link": "",
+        "note_label": "This week",
+        "note_title": "18 new essentials in breathable cotton and relaxed tailoring."
+      }
+    },
+    "featured": {
+      "type": "kapdelatte-featured-products",
+      "settings": {
+        "eyebrow": "Featured products",
+        "heading": "Built for browsing now, ready to grow into a fuller storefront.",
+        "copy": "Connect a collection to this section and Shopify will handle products, variants, and cart submissions.",
+        "collection": "",
+        "products_to_show": 6
+      }
+    },
+    "story": {
+      "type": "kapdelatte-brand-story",
+      "blocks": {
+        "stat-1": {
+          "type": "stat",
+          "settings": {
+            "value": "92%",
+            "label": "Customers return for a second capsule drop."
+          }
+        },
+        "stat-2": {
+          "type": "stat",
+          "settings": {
+            "value": "48 hrs",
+            "label": "Average dispatch time across metro orders."
+          }
+        },
+        "stat-3": {
+          "type": "stat",
+          "settings": {
+            "value": "Small batch",
+            "label": "Fewer leftovers, fresher weekly edits."
+          }
+        },
+        "quote-1": {
+          "type": "quote",
+          "settings": {
+            "quote": "The silhouettes feel premium without being hard to wear. It looks styled even on low-effort days.",
+            "author": "Rhea, Bengaluru"
+          }
+        },
+        "quote-2": {
+          "type": "quote",
+          "settings": {
+            "quote": "I bought the overshirt and ended up building three outfits around it in a week. That almost never happens.",
+            "author": "Arjun, Pune"
+          }
+        },
+        "quote-3": {
+          "type": "quote",
+          "settings": {
+            "quote": "The site feels like the brand: warm, clean, and a little more thoughtful than typical fast fashion.",
+            "author": "Sana, Mumbai"
+          }
+        }
+      },
+      "block_order": ["stat-1", "stat-2", "stat-3", "quote-1", "quote-2", "quote-3"],
+      "settings": {
+        "eyebrow": "Why KapdeLatte",
+        "heading": "We design around the in-between hours people usually overlook.",
+        "copy": "The commute. The errand. The meeting that becomes dinner. Our collections are made to feel calm in motion, with soft structure and fabrics chosen for repeat wear, not one-photo moments.",
+        "visit_heading": "Visit or subscribe",
+        "visit_copy": "Drop by our studio or get first access to capsule launches.",
+        "studio_address": "12 Residency Lane, Indiranagar",
+        "studio_hours": "Mon-Sat, 11:00 AM to 8:00 PM",
+        "studio_email": "hello@kapdelatte.com"
+      }
+    }
+  },
+  "order": ["hero", "featured", "story"]
+}

@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Visual homepage preview for The KapdeLatte, a rooted modern Indian clothing brand."
+    />
+    <title>The KapdeLatte | Homepage Preview</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="page-home">
+    <div class="wash wash-terracotta"></div>
+    <div class="wash wash-indigo"></div>
+    <div class="texture texture-left"></div>
+    <div class="texture texture-right"></div>
+
+    <header class="site-header" id="top">
+      <a class="brand" href="index.html" aria-label="The KapdeLatte home">
+        <span class="brand-mark">TK</span>
+        <span class="brand-copy">
+          <span class="brand-name">The KapdeLatte</span>
+          <span class="brand-tag">Thoughtful clothing for real routines</span>
+        </span>
+      </a>
+
+      <button
+        class="menu-toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="site-navigation"
+      >
+        Menu
+      </button>
+
+      <nav class="site-nav" id="site-navigation" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="#collections">Collections</a>
+        <a href="#featured">Bestsellers</a>
+        <a href="our-thread.html">Our Thread</a>
+        <a href="#footer">Contact</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="icon-button search-toggle" type="button">Search</button>
+        <button
+          class="cart-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="cart-panel"
+        >
+          Bag
+          <span class="cart-count" data-cart-count>0</span>
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <section class="section hero reveal">
+        <div class="hero-copy">
+          <p class="eyebrow">Made for real days</p>
+          <h1>Clothes that feel like you, from the first errand to the last plan.</h1>
+          <p class="hero-text">
+            Premium casual wear, modern kurtas, breezy cottons, and easy co-ords
+            designed for everyday Indian life.
+          </p>
+
+          <div class="hero-actions">
+            <a class="button button-primary" href="#featured">Shop the Collection</a>
+            <a class="button button-secondary" href="our-thread.html">Read Our Thread</a>
+          </div>
+
+          <ul class="hero-highlights" aria-label="Brand highlights">
+            <li>Breathable fabrics for Indian weather</li>
+            <li>Easy exchanges within 7 days</li>
+            <li>Free shipping above Rs. 2,499</li>
+          </ul>
+        </div>
+
+        <div class="hero-visual" aria-hidden="true">
+          <div class="hero-portrait hero-portrait-main">
+            <span>Everyday Co-ords</span>
+          </div>
+          <div class="hero-portrait hero-portrait-top">
+            <span>Breezy Cottons</span>
+          </div>
+          <div class="hero-portrait hero-portrait-bottom">
+            <span>Festive Lights</span>
+          </div>
+          <div class="hero-note hero-note-top">
+            <p class="note-label">Signature palette</p>
+            <p class="note-title">Terracotta, indigo, marigold, forest, and quiet sand.</p>
+          </div>
+          <div class="hero-note hero-note-bottom">
+            <p class="note-label">Imagery direction</p>
+            <p class="note-title">Natural sunlight, lived-in spaces, and movement over posing.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section reveal" id="collections">
+        <div class="section-heading">
+          <p class="eyebrow">Shop by collection</p>
+          <h2>Three moods, all rooted in everyday Indian dressing.</h2>
+        </div>
+
+        <div class="collection-grid">
+          <article class="collection-card collection-card-terracotta">
+            <p class="collection-kicker">The Everyday Co-ords</p>
+            <h3>Matching sets that take the guesswork out of getting dressed.</h3>
+            <p>
+              Relaxed fits, soft structure, and colours that work from weekday to weekend.
+            </p>
+            <a href="#featured">Shop Co-ords</a>
+          </article>
+
+          <article class="collection-card collection-card-marigold">
+            <p class="collection-kicker">Festive Lights</p>
+            <h3>Easy occasion pieces with a little glow and a lot of comfort.</h3>
+            <p>
+              Modern kurtas, textured layers, and polished silhouettes that never feel stiff.
+            </p>
+            <a href="#featured">Shop Occasionwear</a>
+          </article>
+
+          <article class="collection-card collection-card-indigo">
+            <p class="collection-kicker">Breezy Cottons</p>
+            <h3>Soft, breathable staples made for warm days and repeat wear.</h3>
+            <p>
+              Cotton dresses, airy shirts, and easy trousers that move with real life.
+            </p>
+            <a href="#featured">Shop Cottons</a>
+          </article>
+        </div>
+      </section>
+
+      <section class="section reveal" id="featured">
+        <div class="section-heading section-heading-row">
+          <div>
+            <p class="eyebrow">Featured products</p>
+            <h2>Bestsellers that show the tone, fit, and ease of the brand.</h2>
+          </div>
+
+          <div class="filter-group" role="toolbar" aria-label="Featured product filters">
+            <button class="filter-chip is-active" type="button" data-filter="all">All</button>
+            <button class="filter-chip" type="button" data-filter="coords">Co-ords</button>
+            <button class="filter-chip" type="button" data-filter="kurtas">Kurtas</button>
+            <button class="filter-chip" type="button" data-filter="dresses">Dresses</button>
+            <button class="filter-chip" type="button" data-filter="trousers">Trousers</button>
+          </div>
+        </div>
+
+        <div class="carousel-header">
+          <p class="carousel-note">Hover a card to reveal the second look. On mobile, swipe through.</p>
+          <div class="carousel-controls">
+            <button class="carousel-button" type="button" data-carousel-prev>Prev</button>
+            <button class="carousel-button" type="button" data-carousel-next>Next</button>
+          </div>
+        </div>
+
+        <div class="product-carousel" data-carousel>
+          <article class="product-card reveal" data-category="coords">
+            <div class="product-media">
+              <div class="product-image product-image-front product-image-mitti-front"></div>
+              <div class="product-image product-image-back product-image-mitti-back"></div>
+              <span class="product-badge">Best Seller</span>
+            </div>
+            <div class="product-meta">
+              <h3>Mitti Co-ord Set</h3>
+              <p class="product-copy">A breathable cotton set with clean lines, a soft drape, and an easy weekday rhythm.</p>
+              <div class="product-row">
+                <span class="price">Rs. 2,890</span>
+                <button class="button button-dark add-to-cart" type="button" data-product="Mitti Co-ord Set" data-price="2890">Add to Cart</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="product-card reveal" data-category="kurtas">
+            <div class="product-media">
+              <div class="product-image product-image-front product-image-neel-front"></div>
+              <div class="product-image product-image-back product-image-neel-back"></div>
+              <span class="product-badge">New Drop</span>
+            </div>
+            <div class="product-meta">
+              <h3>Neel Everyday Kurta</h3>
+              <p class="product-copy">A modern kurta in deep indigo with a relaxed fit that still feels put together.</p>
+              <div class="product-row">
+                <span class="price">Rs. 2,250</span>
+                <button class="button button-dark add-to-cart" type="button" data-product="Neel Everyday Kurta" data-price="2250">Add to Cart</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="product-card reveal" data-category="trousers">
+            <div class="product-media">
+              <div class="product-image product-image-front product-image-aangan-front"></div>
+              <div class="product-image product-image-back product-image-aangan-back"></div>
+              <span class="product-badge">Easy Pairing</span>
+            </div>
+            <div class="product-meta">
+              <h3>Aangan Relaxed Trousers</h3>
+              <p class="product-copy">Softly tailored trousers that sit easy at the waist and work with shirts, kurtas, or knits.</p>
+              <div class="product-row">
+                <span class="price">Rs. 1,890</span>
+                <button class="button button-dark add-to-cart" type="button" data-product="Aangan Relaxed Trousers" data-price="1890">Add to Cart</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="product-card reveal" data-category="dresses">
+            <div class="product-media">
+              <div class="product-image product-image-front product-image-gulmohar-front"></div>
+              <div class="product-image product-image-back product-image-gulmohar-back"></div>
+              <span class="product-badge">Light Occasion</span>
+            </div>
+            <div class="product-meta">
+              <h3>Gulmohar Tiered Dress</h3>
+              <p class="product-copy">Flowing cotton volume, a flattering neckline, and movement that feels effortless in daylight.</p>
+              <div class="product-row">
+                <span class="price">Rs. 3,290</span>
+                <button class="button button-dark add-to-cart" type="button" data-product="Gulmohar Tiered Dress" data-price="3290">Add to Cart</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="product-card reveal" data-category="kurtas">
+            <div class="product-media">
+              <div class="product-image product-image-front product-image-saanjh-front"></div>
+              <div class="product-image product-image-back product-image-saanjh-back"></div>
+              <span class="product-badge">Layering Pick</span>
+            </div>
+            <div class="product-meta">
+              <h3>Saanjh Overlay Jacket</h3>
+              <p class="product-copy">A versatile outer layer for festive dinners, work events, and in-between weather.</p>
+              <div class="product-row">
+                <span class="price">Rs. 2,990</span>
+                <button class="button button-dark add-to-cart" type="button" data-product="Saanjh Overlay Jacket" data-price="2990">Add to Cart</button>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section brand-story-banner reveal">
+        <div class="story-visual">
+          <div class="story-pattern"></div>
+        </div>
+        <div class="story-copy">
+          <p class="eyebrow">What The KapdeLatte stands for</p>
+          <h2>Everyday clothes deserve the same love as occasionwear.</h2>
+          <p>
+            The pieces you wear most should feel the most considered. Easy silhouettes,
+            breathable fabrics, and details that feel familiar without feeling ordinary.
+          </p>
+          <a class="button button-primary" href="our-thread.html">Know Our Story</a>
+        </div>
+      </section>
+
+      <section class="section trust-section reveal">
+        <div class="trust-grid">
+          <article class="trust-card">
+            <h3>Breathable Fabrics</h3>
+            <p>Cotton-rich, easy textures chosen for Indian weather.</p>
+          </article>
+          <article class="trust-card">
+            <h3>Free Shipping</h3>
+            <p>Free shipping on orders above Rs. 2,499.</p>
+          </article>
+          <article class="trust-card">
+            <h3>Easy Exchanges</h3>
+            <p>7-day exchanges on unworn pieces.</p>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <aside class="cart-panel" id="cart-panel" aria-hidden="true">
+      <div class="cart-panel-header">
+        <div>
+          <p class="eyebrow">Your bag</p>
+          <h2>Saved pieces</h2>
+        </div>
+        <button class="cart-close" type="button" aria-label="Close bag">Close</button>
+      </div>
+
+      <div class="cart-items" data-cart-items>
+        <p class="cart-empty">Your bag is empty. Add a few favorites to see them here.</p>
+      </div>
+
+      <div class="cart-footer">
+        <div class="cart-total-row">
+          <span>Estimated total</span>
+          <strong data-cart-total>Rs. 0</strong>
+        </div>
+        <button class="button button-primary button-block" type="button">Proceed to checkout</button>
+      </div>
+    </aside>
+
+    <div class="page-overlay" data-overlay hidden></div>
+
+    <footer class="site-footer" id="footer">
+      <div class="footer-newsletter">
+        <p class="eyebrow">Newsletter</p>
+        <h2>A little update, once in a while.</h2>
+        <p>New drops, restocks, and styling notes. Nothing noisy.</p>
+        <form class="subscribe-form">
+          <div class="subscribe-row">
+            <input
+              id="email"
+              name="email"
+              type="email"
+              placeholder="Enter your email"
+              autocomplete="email"
+            />
+            <button class="button button-primary" type="submit">Join Us</button>
+          </div>
+          <p class="form-note" data-form-message>We write the way we dress: thoughtfully.</p>
+        </form>
+      </div>
+
+      <div class="footer-links">
+        <div>
+          <h3>Shop</h3>
+          <a href="#featured">New Arrivals</a>
+          <a href="#collections">Co-ords</a>
+          <a href="#featured">Kurtas</a>
+          <a href="#featured">Dresses</a>
+        </div>
+        <div>
+          <h3>About</h3>
+          <a href="our-thread.html">Our Thread</a>
+          <a href="#footer">Contact</a>
+          <a href="#footer">Instagram</a>
+          <a href="#footer">Pinterest</a>
+        </div>
+        <div>
+          <h3>Policies</h3>
+          <a href="#footer">Shipping Policy</a>
+          <a href="#footer">Returns & Exchanges</a>
+          <a href="#footer">Privacy Policy</a>
+          <a href="#footer">Terms of Service</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>The KapdeLatte</p>
+        <p>Made for everyday Indian dressing.</p>
+        <p>&copy; <span data-year></span> All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

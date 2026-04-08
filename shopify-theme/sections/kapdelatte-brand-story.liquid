@@ -1,0 +1,203 @@
+<section class="kl-section kl-story-section kl-reveal" id="shopify-story">
+  <div class="kl-shell kl-story-grid">
+    <article class="kl-story-card kl-story-card-large">
+      <p class="kl-eyebrow">{{ section.settings.eyebrow }}</p>
+      <h2>{{ section.settings.heading }}</h2>
+      <p>{{ section.settings.copy }}</p>
+    </article>
+
+    <article class="kl-story-card kl-story-card-stats">
+      {% for block in section.blocks %}
+        {% if block.type == 'stat' %}
+          <div {{ block.shopify_attributes }}>
+            <strong>{{ block.settings.value }}</strong>
+            <span>{{ block.settings.label }}</span>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </article>
+  </div>
+</section>
+
+<section class="kl-section kl-testimonial-section kl-reveal">
+  <div class="kl-shell">
+    <div class="kl-section-heading">
+      <p class="kl-eyebrow">What shoppers say</p>
+      <h2>Editorial feel, wearable comfort, and enough personality to stand apart.</h2>
+    </div>
+
+    <div class="kl-testimonial-grid">
+      {% for block in section.blocks %}
+        {% if block.type == 'quote' %}
+          <blockquote class="kl-testimonial-card" {{ block.shopify_attributes }}>
+            <p>"{{ block.settings.quote }}"</p>
+            <footer>{{ block.settings.author }}</footer>
+          </blockquote>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="kl-section kl-visit-section kl-reveal" id="shopify-visit">
+  <div class="kl-shell kl-visit-layout">
+    <div class="kl-visit-copy">
+      <p class="kl-eyebrow">{{ section.settings.visit_heading }}</p>
+      <h2>{{ section.settings.visit_copy }}</h2>
+      <p>We send carefully timed updates with launch previews, restock alerts, and styling notes.</p>
+    </div>
+
+    <div class="kl-visit-panels">
+      <article class="kl-visit-card">
+        <h3>Studio hours</h3>
+        <p>{{ section.settings.studio_address }}</p>
+        <p>{{ section.settings.studio_hours }}</p>
+        <a href="mailto:{{ section.settings.studio_email }}">{{ section.settings.studio_email }}</a>
+      </article>
+
+      {% form 'customer', class: 'kl-visit-card kl-newsletter-form' %}
+        <input type="hidden" name="contact[tags]" value="newsletter">
+        <label class="kl-form-label" for="NewsletterEmail-{{ section.id }}">Email address</label>
+        <div class="kl-subscribe-row">
+          <input
+            id="NewsletterEmail-{{ section.id }}"
+            type="email"
+            name="contact[email]"
+            value="{{ form.email }}"
+            placeholder="you@example.com"
+            autocomplete="email"
+          >
+          <button class="kl-button kl-button-primary" type="submit">Join the list</button>
+        </div>
+        {% if form.posted_successfully? %}
+          <p class="kl-form-note kl-form-note-success">Thanks. You are on the list for the next drop.</p>
+        {% elsif form.errors %}
+          <p class="kl-form-note kl-form-note-error">{{ form.errors | default_errors }}</p>
+        {% else %}
+          <p class="kl-form-note">Weekly notes, early drops, and styling edits.</p>
+        {% endif %}
+      {% endform %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "KapdeLatte brand story",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Why KapdeLatte"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "We design around the in-between hours people usually overlook."
+    },
+    {
+      "type": "textarea",
+      "id": "copy",
+      "label": "Copy",
+      "default": "The commute. The errand. The meeting that becomes dinner. Our collections are made to feel calm in motion, with soft structure and fabrics chosen for repeat wear, not one-photo moments."
+    },
+    {
+      "type": "text",
+      "id": "visit_heading",
+      "label": "Visit eyebrow",
+      "default": "Visit or subscribe"
+    },
+    {
+      "type": "text",
+      "id": "visit_copy",
+      "label": "Visit heading",
+      "default": "Drop by our studio or get first access to capsule launches."
+    },
+    {
+      "type": "text",
+      "id": "studio_address",
+      "label": "Studio address",
+      "default": "12 Residency Lane, Indiranagar"
+    },
+    {
+      "type": "text",
+      "id": "studio_hours",
+      "label": "Studio hours",
+      "default": "Mon-Sat, 11:00 AM to 8:00 PM"
+    },
+    {
+      "type": "text",
+      "id": "studio_email",
+      "label": "Studio email",
+      "default": "hello@kapdelatte.com"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "stat",
+      "name": "Stat",
+      "limit": 3,
+      "settings": [
+        {
+          "type": "text",
+          "id": "value",
+          "label": "Value",
+          "default": "92%"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Customers return for a second capsule drop."
+        }
+      ]
+    },
+    {
+      "type": "quote",
+      "name": "Quote",
+      "limit": 3,
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "quote",
+          "label": "Quote",
+          "default": "The silhouettes feel premium without being hard to wear."
+        },
+        {
+          "type": "text",
+          "id": "author",
+          "label": "Author",
+          "default": "Rhea, Bengaluru"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "KapdeLatte brand story",
+      "blocks": [
+        {
+          "type": "stat"
+        },
+        {
+          "type": "stat"
+        },
+        {
+          "type": "stat"
+        },
+        {
+          "type": "quote"
+        },
+        {
+          "type": "quote"
+        },
+        {
+          "type": "quote"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

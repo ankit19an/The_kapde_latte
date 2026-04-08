@@ -1,0 +1,80 @@
+<section class="kl-section kl-cart-page-section kl-reveal">
+  <div class="kl-shell">
+    <div class="kl-section-heading">
+      <p class="kl-eyebrow">Your bag</p>
+      <h1>Cart</h1>
+    </div>
+
+    {% if cart.item_count == 0 %}
+      <div class="kl-empty-state">
+        <p>Your bag is empty right now.</p>
+        <a class="kl-button kl-button-primary" href="{{ routes.all_products_collection_url }}">Continue shopping</a>
+      </div>
+    {% else %}
+      {% form 'cart', cart, class: 'kl-cart-form' %}
+        <div class="kl-cart-layout">
+          <div class="kl-cart-list">
+            {% for item in cart.items %}
+              <article class="kl-cart-line">
+                <a class="kl-cart-line-media" href="{{ item.url }}">
+                  {% if item.image != blank %}
+                    {{
+                      item.image
+                      | image_url: width: 320
+                      | image_tag:
+                        class: 'kl-cart-line-image',
+                        loading: 'lazy',
+                        alt: item.product.title
+                    }}
+                  {% else %}
+                    <div class="kl-cart-line-image kl-cart-line-placeholder"></div>
+                  {% endif %}
+                </a>
+
+                <div class="kl-cart-line-info">
+                  <div>
+                    <h2><a href="{{ item.url }}">{{ item.product.title }}</a></h2>
+                    {% unless item.variant.title == 'Default Title' %}
+                      <p class="kl-cart-line-variant">{{ item.variant.title }}</p>
+                    {% endunless %}
+                    <p class="kl-cart-line-price">{{ item.final_line_price | money_without_trailing_zeros }}</p>
+                  </div>
+
+                  <div class="kl-cart-line-controls">
+                    <label class="kl-form-label" for="CartQuantity-{{ forloop.index }}">Quantity</label>
+                    <input
+                      id="CartQuantity-{{ forloop.index }}"
+                      class="kl-quantity-input"
+                      type="number"
+                      name="updates[]"
+                      value="{{ item.quantity }}"
+                      min="0"
+                    >
+                    <a class="kl-cart-remove" href="{{ item.url_to_remove }}">Remove</a>
+                  </div>
+                </div>
+              </article>
+            {% endfor %}
+          </div>
+
+          <aside class="kl-cart-summary">
+            <div class="kl-cart-summary-row">
+              <span>Subtotal</span>
+              <strong>{{ cart.total_price | money_without_trailing_zeros }}</strong>
+            </div>
+            <p class="kl-cart-summary-note">Taxes and shipping are calculated at checkout.</p>
+            <button class="kl-button kl-button-secondary kl-button-block" type="submit" name="update">Update bag</button>
+            <button class="kl-button kl-button-primary kl-button-block" type="submit" name="checkout">Checkout</button>
+          </aside>
+        </div>
+      {% endform %}
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Main cart",
+  "settings": []
+}
+{% endschema %}

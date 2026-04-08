@@ -1,0 +1,102 @@
+<section class="kl-section kl-product-page-section kl-reveal">
+  <div class="kl-shell kl-main-product">
+    <div class="kl-main-product-media">
+      {% if product.media.size > 0 %}
+        {% for media in product.media %}
+          <div class="kl-main-product-media-card">
+            {% case media.media_type %}
+              {% when 'image' %}
+                {{
+                  media
+                  | image_url: width: 1200
+                  | image_tag:
+                    class: 'kl-main-product-image',
+                    loading: 'lazy',
+                    alt: product.title
+                }}
+              {% else %}
+                {{ media | media_tag: class: 'kl-main-product-image', image_size: '1200x' }}
+            {% endcase %}
+          </div>
+        {% endfor %}
+      {% else %}
+        <div class="kl-main-product-media-card kl-main-product-media-placeholder"></div>
+      {% endif %}
+    </div>
+
+    <div class="kl-main-product-info">
+      {% if section.settings.show_vendor and product.vendor != blank %}
+        <p class="kl-eyebrow">{{ product.vendor }}</p>
+      {% endif %}
+
+      <h1>{{ product.title }}</h1>
+      <p class="kl-main-product-price">
+        {% if product.compare_at_price > product.price %}
+          <span class="kl-price-compare">{{ product.compare_at_price | money_without_trailing_zeros }}</span>
+        {% endif %}
+        <span>{{ product.price | money_without_trailing_zeros }}</span>
+      </p>
+
+      {% if section.settings.show_description and product.description != blank %}
+        <div class="kl-main-product-description rte">
+          {{ product.description }}
+        </div>
+      {% endif %}
+
+      {% form 'product', product, class: 'kl-main-product-form' %}
+        {% unless product.has_only_default_variant %}
+          <label class="kl-form-label" for="VariantSelect-{{ section.id }}">Choose an option</label>
+          <select id="VariantSelect-{{ section.id }}" class="kl-variant-select" name="id">
+            {% for variant in product.variants %}
+              <option
+                value="{{ variant.id }}"
+                {% if variant == product.selected_or_first_available_variant %}selected{% endif %}
+                {% unless variant.available %}disabled{% endunless %}
+              >
+                {{ variant.title }} - {{ variant.price | money_without_trailing_zeros }}
+              </option>
+            {% endfor %}
+          </select>
+        {% else %}
+          <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+        {% endunless %}
+
+        <label class="kl-form-label" for="Quantity-{{ section.id }}">Quantity</label>
+        <input
+          id="Quantity-{{ section.id }}"
+          class="kl-quantity-input"
+          type="number"
+          name="quantity"
+          value="1"
+          min="1"
+        >
+
+        {% if product.available %}
+          <button class="kl-button kl-button-primary kl-button-block" type="submit">Add to bag</button>
+        {% else %}
+          <p class="kl-sold-out kl-sold-out-inline">Sold out</p>
+        {% endif %}
+      {% endform %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Main product",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_vendor",
+      "label": "Show vendor",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "show_description",
+      "label": "Show description",
+      "default": true
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,106 @@
+{% paginate collection.products by section.settings.products_per_page %}
+  <section class="kl-section kl-collection-page-section kl-reveal">
+    <div class="kl-shell">
+      <div class="kl-section-heading">
+        <p class="kl-eyebrow">{{ collection.title }}</p>
+        <h1>{{ collection.title }}</h1>
+        {% if section.settings.show_description and collection.description != blank %}
+          <div class="kl-section-copy rte">
+            {{ collection.description }}
+          </div>
+        {% endif %}
+      </div>
+
+      <div class="kl-product-grid">
+        {% for product in collection.products %}
+          <article class="kl-product-card">
+            <a class="kl-product-visual-wrap" href="{{ product.url }}">
+              {% if product.featured_image != blank %}
+                {{
+                  product.featured_image
+                  | image_url: width: 900
+                  | image_tag:
+                    class: 'kl-product-image',
+                    loading: 'lazy',
+                    alt: product.title
+                }}
+              {% else %}
+                <div class="kl-product-visual kl-product-visual-{{ forloop.index0 | modulo: 6 | plus: 1 }}"></div>
+              {% endif %}
+            </a>
+
+            <div class="kl-product-meta">
+              {% if product.tags.size > 0 %}
+                <p class="kl-product-tag">{{ product.tags.first }}</p>
+              {% endif %}
+              <h3><a href="{{ product.url }}">{{ product.title }}</a></h3>
+              <p class="kl-product-copy">
+                {% if product.description != blank %}
+                  {{ product.description | strip_html | truncate: 110 }}
+                {% else %}
+                  Built for repeat wear with a polished but easy feel.
+                {% endif %}
+              </p>
+              <div class="kl-product-row">
+                <span class="kl-price">{{ product.price | money_without_trailing_zeros }}</span>
+                <a class="kl-button kl-button-dark" href="{{ product.url }}">View product</a>
+              </div>
+            </div>
+          </article>
+        {% else %}
+          <article class="kl-product-card">
+            <div class="kl-product-visual kl-product-visual-1"></div>
+            <div class="kl-product-meta">
+              <p class="kl-product-tag">Collection empty</p>
+              <h3>Add products to this collection</h3>
+              <p class="kl-product-copy">Once products are assigned in Shopify admin, they will appear here automatically.</p>
+            </div>
+          </article>
+        {% endfor %}
+      </div>
+
+      {% if paginate.pages > 1 %}
+        <nav class="kl-pagination" aria-label="Pagination">
+          {% if paginate.previous %}
+            <a class="kl-pagination-link" href="{{ paginate.previous.url }}">Previous</a>
+          {% endif %}
+
+          {% for part in paginate.parts %}
+            {% if part.is_link %}
+              <a class="kl-pagination-link" href="{{ part.url }}">{{ part.title }}</a>
+            {% else %}
+              <span class="kl-pagination-link{% if part.title == paginate.current_page or part.title == paginate.current_page | append: '' %} is-current{% endif %}">{{ part.title }}</span>
+            {% endif %}
+          {% endfor %}
+
+          {% if paginate.next %}
+            <a class="kl-pagination-link" href="{{ paginate.next.url }}">Next</a>
+          {% endif %}
+        </nav>
+      {% endif %}
+    </div>
+  </section>
+{% endpaginate %}
+
+{% schema %}
+{
+  "name": "Main collection",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_description",
+      "label": "Show collection description",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "products_per_page",
+      "label": "Products per page",
+      "min": 6,
+      "max": 24,
+      "step": 3,
+      "default": 12
+    }
+  ]
+}
+{% endschema %}

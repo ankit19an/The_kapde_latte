@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="{{ request.locale.iso_code }}">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="theme-color" content="#9f5333">
+    <title>
+      {{ page_title }}
+      {% if current_page != 1 %} &ndash; Page {{ current_page }}{% endif %}
+      {% unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless %}
+    </title>
+    {{ content_for_header }}
+    {{ 'kapdelatte-theme.css' | asset_url | stylesheet_tag }}
+    <script src="{{ 'kapdelatte-theme.js' | asset_url }}" defer></script>
+  </head>
+  <body class="kl-theme">
+    <div class="kl-ambient kl-ambient-left"></div>
+    <div class="kl-ambient kl-ambient-right"></div>
+
+    <header class="kl-shell kl-site-header">
+      <a class="kl-brand" href="{{ routes.root_url }}">
+        <span class="kl-brand-mark">KL</span>
+        <span class="kl-brand-copy">
+          <span class="kl-brand-name">{{ shop.name }}</span>
+          <span class="kl-brand-tag">{{ settings.tagline }}</span>
+        </span>
+      </a>
+
+      <nav class="kl-nav" aria-label="Primary">
+        {% assign primary_menu = linklists[settings.main_menu] %}
+        {% if primary_menu != blank and primary_menu.links.size > 0 %}
+          {% for link in primary_menu.links %}
+            <a href="{{ link.url }}">{{ link.title }}</a>
+          {% endfor %}
+        {% else %}
+          <a href="{{ routes.root_url }}">Home</a>
+          <a href="{{ routes.all_products_collection_url }}">Shop</a>
+          <a href="{{ routes.collections_url }}">Collections</a>
+          <a href="{{ routes.cart_url }}">Bag</a>
+        {% endif %}
+      </nav>
+
+      <a class="kl-cart-link" href="{{ routes.cart_url }}">
+        Bag
+        <span>{{ cart.item_count }}</span>
+      </a>
+    </header>
+
+    <main role="main">
+      {{ content_for_layout }}
+    </main>
+
+    <footer class="kl-shell kl-site-footer">
+      <p>{{ shop.name }}</p>
+      <p>{{ settings.tagline }}</p>
+      <p>&copy; {{ 'now' | date: '%Y' }} All rights reserved.</p>
+    </footer>
+  </body>
+</html>

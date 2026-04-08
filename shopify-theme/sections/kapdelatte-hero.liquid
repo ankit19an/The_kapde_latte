@@ -1,0 +1,193 @@
+{% assign primary_link = '#shopify-featured' %}
+{% assign secondary_link = '#shopify-story' %}
+{% if section.settings.primary_link != blank %}
+  {% assign primary_link = section.settings.primary_link %}
+{% endif %}
+{% if section.settings.secondary_link != blank %}
+  {% assign secondary_link = section.settings.secondary_link %}
+{% endif %}
+
+<section class="kl-section kl-hero-section kl-reveal" id="shopify-home">
+  <div class="kl-shell kl-hero">
+    <div class="kl-hero-copy">
+      <p class="kl-eyebrow">{{ section.settings.eyebrow }}</p>
+      <h1>{{ section.settings.heading }}</h1>
+      <p class="kl-hero-text">{{ section.settings.copy }}</p>
+
+      <div class="kl-hero-actions">
+        <a class="kl-button kl-button-primary" href="{{ primary_link }}">{{ section.settings.primary_label }}</a>
+        <a class="kl-button kl-button-secondary" href="{{ secondary_link }}">{{ section.settings.secondary_label }}</a>
+      </div>
+
+      <ul class="kl-hero-highlights" aria-label="Brand highlights">
+        <li>Free shipping over Rs. 1999</li>
+        <li>Easy size exchange within 10 days</li>
+        <li>Small-batch weekly restocks</li>
+      </ul>
+    </div>
+
+    <div class="kl-hero-visual" aria-hidden="true">
+      <div class="kl-hero-card kl-hero-card-main">
+        <p class="kl-card-label">Signature palette</p>
+        <p class="kl-card-title">Sand, stone, rust, and midnight denim.</p>
+        <div class="kl-swatches">
+          <span style="--swatch: #d0ab8a"></span>
+          <span style="--swatch: #f0dfc9"></span>
+          <span style="--swatch: #9b4f2f"></span>
+          <span style="--swatch: #29313b"></span>
+        </div>
+      </div>
+      <div class="kl-hero-card kl-hero-card-note">
+        <p class="kl-card-label">{{ section.settings.note_label }}</p>
+        <p class="kl-card-title">{{ section.settings.note_title }}</p>
+      </div>
+      <div class="kl-hero-orb kl-hero-orb-large"></div>
+      <div class="kl-hero-orb kl-hero-orb-small"></div>
+    </div>
+  </div>
+</section>
+
+<section class="kl-section kl-collections-section kl-reveal">
+  <div class="kl-shell">
+    <div class="kl-section-heading">
+      <p class="kl-eyebrow">Shop by mood</p>
+      <h2>Three capsule stories for the way your week actually moves.</h2>
+    </div>
+
+    <div class="kl-collection-grid">
+      {% for block in section.blocks %}
+        {% if block.type == 'mood_card' %}
+          <article class="kl-collection-card kl-collection-card-{{ block.settings.card_style }}" {{ block.shopify_attributes }}>
+            <p class="kl-collection-kicker">{{ block.settings.kicker }}</p>
+            <h3>{{ block.settings.title }}</h3>
+            <p>{{ block.settings.copy }}</p>
+            <a href="#shopify-featured">Explore looks</a>
+          </article>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "KapdeLatte hero",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "New season drop"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Thoughtful clothing for real routines."
+    },
+    {
+      "type": "textarea",
+      "id": "copy",
+      "label": "Copy",
+      "default": "KapdeLatte brings together relaxed tailoring, versatile silhouettes, and easy fabrics for people who want everyday wear to still feel intentional."
+    },
+    {
+      "type": "text",
+      "id": "primary_label",
+      "label": "Primary button label",
+      "default": "Shop The Edit"
+    },
+    {
+      "type": "url",
+      "id": "primary_link",
+      "label": "Primary button link"
+    },
+    {
+      "type": "text",
+      "id": "secondary_label",
+      "label": "Secondary button label",
+      "default": "Read Our Story"
+    },
+    {
+      "type": "url",
+      "id": "secondary_link",
+      "label": "Secondary button link"
+    },
+    {
+      "type": "text",
+      "id": "note_label",
+      "label": "Note label",
+      "default": "This week"
+    },
+    {
+      "type": "text",
+      "id": "note_title",
+      "label": "Note title",
+      "default": "18 new essentials in breathable cotton and relaxed tailoring."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "mood_card",
+      "name": "Mood card",
+      "limit": 3,
+      "settings": [
+        {
+          "type": "text",
+          "id": "kicker",
+          "label": "Kicker",
+          "default": "Workday Ease"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Easy layers for early starts and long afternoons."
+        },
+        {
+          "type": "textarea",
+          "id": "copy",
+          "label": "Copy",
+          "default": "Lightweight shirts, wide-leg pants, and versatile neutrals that hold shape all day."
+        },
+        {
+          "type": "select",
+          "id": "card_style",
+          "label": "Card style",
+          "default": "dawn",
+          "options": [
+            {
+              "value": "dawn",
+              "label": "Dawn"
+            },
+            {
+              "value": "warm",
+              "label": "Warm"
+            },
+            {
+              "value": "night",
+              "label": "Night"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "KapdeLatte hero",
+      "blocks": [
+        {
+          "type": "mood_card"
+        },
+        {
+          "type": "mood_card"
+        },
+        {
+          "type": "mood_card"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
